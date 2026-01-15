@@ -1,0 +1,913 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>Shop — VÉRAYA</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+		<style>
+			:root{
+				--main:#EBE8E8;
+				--panel:#ffffff;
+				--text:#0b1220;
+				--muted:rgba(11,18,32,0.55);
+				--accent:#000000;
+			}
+			*{box-sizing:border-box}
+			body{
+				margin:0;
+				font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+				background:var(--main);
+				color:var(--text);
+				-webkit-font-smoothing:antialiased;
+				-moz-osx-font-smoothing:grayscale;
+			}
+			header.site{
+				max-width:1200px;
+				margin:28px auto 8px;
+				padding:0 28px;
+				position:sticky;
+				top:0;
+				z-index:60;
+				background:var(--main);
+				backdrop-filter: blur(6px);
+				box-shadow: 0 6px 18px rgba(11,18,32,0.06);
+			}
+			nav.top{
+				display:flex;
+				align-items:center;
+				justify-content:space-between;
+				gap:12px;
+			}
+			.nav-left, .nav-right{
+				display:flex;
+				gap:22px;
+				align-items:center;
+			}
+			.header-actions{display:flex;gap:12px;align-items:center}
+			.icon-btn{background:transparent;border:0;padding:6px;cursor:pointer;position:relative;display:inline-flex;align-items:center;justify-content:center}
+			.icon-btn svg{width:20px;height:20px;display:block;fill:var(--text)}
+			.icon-btn:focus{outline:2px solid rgba(0,0,0,0.12);outline-offset:2px}
+			.cart-badge{position:absolute;right:2px;top:2px;background:#e60023;color:#fff;border-radius:999px;font-size:11px;padding:2px 6px;line-height:1}
+			.search-wrapper{position:relative;display:flex;align-items:center}
+			.search-input{display:none;border:1px solid rgba(11,18,32,0.08);padding:8px 10px;margin-left:8px;border-radius:6px;min-width:200px}
+			.search-wrapper.active .search-input{display:block}
+			@media (min-width:900px){
+				.search-input{display:block}
+				.search-wrapper{margin-left:12px}
+			}
+			.nav-left a, .nav-right a{
+				text-decoration:none;
+				color:var(--text);
+				font-size:1rem;
+				border-bottom:1px solid transparent;
+				padding-bottom:2px;
+			}
+			.nav-left a:hover, .nav-right a:hover{border-bottom-color:var(--accent)}
+			.logo{
+				font-family:'Playfair Display', serif;
+				font-weight:900;
+				font-size:48px;
+				letter-spacing:2px;
+				margin:0 16px;
+				text-align:center;
+			}
+			.logo img{height:140px;display:block;object-fit:contain}
+			@media (max-width:980px){.logo img{height:112px}}
+			@media (max-width:720px){.logo img{height:96px}; nav.top{flex-direction:column;align-items:stretch}; .nav-left, .nav-right{justify-content:center}; .logo{order:0;margin:12px 0}}
+			main.container{
+				max-width:1200px;
+				margin:48px auto;
+				padding:24px 28px 40px;
+				text-align:center;
+			}
+			h1{
+				font-family:'Playfair Display', serif;
+				font-size:48px;
+				margin:0 0 18px;
+			}
+			p{
+				color:var(--muted);
+				line-height:1.6;
+				font-size:1.05rem;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="site">
+			<nav class="top" role="navigation" aria-label="Main navigation">
+				<div class="nav-left">
+					<div class="logo"><a href="index.html" aria-label="Home"><img src="Images/logo.png" alt="VÉRAYA logo"></a></div>
+					<a href="index.html">Home</a>
+					<a href="about-us.html">About Us</a>
+					<a href="shop.html">Shop</a>
+				</div>
+				<div class="nav-right">
+					<a href="lookbook.html" aria-label="Lookbook">Lookbook</a>
+					<a href="size-chart.html" aria-label="Size Chart">Size Chart</a>
+					<a href="faqs.html" aria-label="FAQs">FAQs</a>
+					<a href="contact.html" aria-label="Contact Us">Contact Us</a>
+					<div class="search-wrapper">
+						<button class="icon-btn search-toggle" aria-label="Open search">
+							<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+						</button>
+						<input class="search-input" type="search" placeholder="Search products" aria-label="Search products">
+					</div>
+					<a class="icon-btn account-link" href="signin.html" aria-label="Account">
+						<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/></svg>
+					</a>
+					<button class="icon-btn cart-btn" aria-label="View cart">
+						<span class="cart-badge">0</span>
+						<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2zM7.16 14.26l.84-4.26h8.02c.75 0 1.41-.41 1.75-1.03l1.58-3.33L20.1 4H6.21l-.94-2H1v2h2l3.6 7.59-1.35 2.45C4.52 15.37 5.48 17 7 17h12v-2H7.42c-.13 0-.24-.09-.26-.22z"/></svg>
+					</button>
+				</div>
+			</nav>
+		</header>
+		<main class="container">
+			<h1>Shop</h1>
+			<p>Browse our complete collection of effortless, elegant pieces.</p>
+			<div class="product-grid">
+				<script>
+				const products = Array.from({length: 22}, (_, i) => {
+					if (i === 0) {
+						return {
+							id: 1,
+							name: 'Renata Short Sleeve',
+							description: 'A classic fitted tee for everyday comfort and style.',
+							sizes: ['XS', 'S', 'M', 'L', 'XL'],
+							colors: ['Black', 'White', 'Skintone', 'Brown', 'Navy', 'Pink', 'Blue'],
+							images: [
+								'Images/renata-black.jpg',
+								'Images/renata-white.jpg',
+								'Images/renata-skintone.jpg',
+								'Images/renata-brown.jpg',
+								'Images/renata-navy.jpg',
+								'Images/renata-pink.jpg',
+								'Images/renata-blue.jpg'
+							]
+						};
+					}
+					if (i === 1) {
+						return {
+							id: 2,
+							name: 'Martina Scoop Neck',
+							description: 'A modern scoop neck top for a flattering, feminine look.',
+							sizes: ['XS', 'S', 'M', 'L', 'XL'],
+							colors: ['Black', 'White', 'Brown', 'Navy', 'Blue'],
+							images: [
+								'Images/martina-black.jpg',
+								'Images/martina-white.jpg',
+								'Images/martina-brown.jpg',
+								'Images/martina-royalblue.jpg',
+								'Images/martina-lightblue.jpg'
+							]
+						};
+					}
+					if (i === 2) {
+						return {
+							id: 3,
+							name: 'Naomi Tee',
+							description: 'A basic plain cotton roundneck',
+							sizes: ['XS', 'S', 'M', 'L', 'XL'],
+							colors: ['Black', 'White', 'Brown', 'Maroon', 'Blue'],
+							images: [
+								'Images/naomi-black.jpg',
+								'Images/naomi-white.jpg',
+								'Images/naomi-brown.jpg',
+								'Images/naomi-maroon.jpg',
+								'Images/naomi-royalblue.jpg'
+							]
+						};
+					}
+					if (i === 3) {
+						return {
+							id: 4,
+							name: 'Emilee U-Neck Tee',
+							description: 'A flattering U-neck cotton tee in essential colors.',
+							sizes: ['XS', 'S', 'M', 'L', 'XL'],
+							colors: ['Black', 'White', 'Brown', 'Cream'],
+							images: [
+								'Images/emilee-black.jpg',
+								'Images/emilee-white.jpg',
+								'Images/emilee-brown.jpg',
+								'Images/emilee-cream.jpg'
+							]
+						};
+					}
+					if (i === 4) {
+						return {
+							id: 5,
+							name: 'Ringer Tee',
+							description: 'A basic plain cotton round neck.',
+							sizes: ['XS', 'S', 'M', 'L', 'XL'],
+							colors: [
+								'Black White',
+								'White Bright Red',
+								'Brown Black',
+								'Gray Black',
+								'White Green',
+								'White Light Yellow',
+								'White Orange',
+								'White Royal Blue',
+								'Royal Blue White',
+								'White Sky Blue',
+								'White Black',
+								'White Red',
+								'White Baby Pink'
+							],
+							images: [
+								'Images/ringer-blackwhite.jpg',
+								'Images/ringer-whitebrightred.jpg',
+								'Images/ringer-brownblack.jpg',
+								'Images/ringer-grayblack.jpg',
+								'Images/ringer-whitegreen.jpg',
+								'Images/ringer-whitelightyellow.jpg',
+								'Images/ringer-whiteorange.jpg',
+								'Images/ringer-whiteroyalblue.jpg',
+								'Images/ringer-royalbluewhite.jpg',
+								'Images/ringer-whiteskyblue.jpg',
+								'Images/ringer-whiteblack.jpg',
+								'Images/ringer-whitered.jpg',
+								'Images/ringer-whitebabypink.jpg'
+							]
+						};
+					}
+					if (i === 5) {
+						return {
+							id: 6,
+							name: 'Adelina Halter Top',
+							description: 'A casual backless halter top.',
+							sizes: ['XS', 'S', 'M', 'L', 'XL'],
+							colors: ['Black', 'White', 'Light Blue', 'Blue', 'Dark Gray', 'Light Green', 'Red', 'Sage'],
+							images: [
+								'Images/adelina-black.jpg',
+								'Images/adelina-white.jpg',
+								'Images/adelina-lightblue.jpg',
+								'Images/adelina-blue.jpg',
+								'Images/adelina-darkgray.jpg',
+								'Images/adelina-lightgreen.jpg',
+								'Images/adelina-red.jpg',
+								'Images/adelina-sage.jpg'
+							]
+						};
+					}
+					if (i === 6) {
+						return {
+							id: 7,
+							  name: 'Amanda Racerback Top',
+							description: 'A slim-fit racerback top.',
+							sizes: ['XS', 'S', 'M', 'L', 'XL'],
+							colors: ['Black', 'White', 'Gray', 'Light Gray', 'Nude', 'Sky Blue'],
+							images: [
+								'Images/amanda-black.jpg',
+								'Images/amanda-white.jpg',
+								'Images/amanda-gray.jpg',
+								'Images/amanda-lightgray.jpg',
+								'Images/amanda-nude.jpg',
+								'Images/amanda-skyblue.jpg'
+							]
+						};
+					}
+					if (i === 7) {
+						return {
+							id: 8,
+							name: 'Arya Tank Top',
+							description: 'A slim-fit tank top.',
+							sizes: ['XS', 'S', 'M', 'L', 'XL'],
+							colors: ['Black', 'White', 'Brown', 'Dark Blue', 'Acid Gray', 'Sky Blue'],
+							images: [
+								'Images/arya-black.jpg',
+								'Images/arya-white.jpg',
+								'Images/arya-brown.jpg',
+								'Images/arya-darkblue.jpg',
+								'Images/arya-acidgray.jpg',
+								'Images/arya-skyblue.jpg'
+							]
+						};
+					}
+					// Product 9: Chiara Halter Top
+										if (i === 8) {
+											return {
+												id: 9,
+												name: 'Chiara Halter Top',
+												description: 'A chic halter top in five elegant colors.',
+												sizes: ['XS', 'S', 'M', 'L', 'XL'],
+												colors: ['Black', 'White', 'Nude', 'Red', 'Sky Blue'],
+												images: [
+													'Images/chiara-black.jpg',
+													'Images/chiara-white.jpg',
+													'Images/chiara-nude.jpg',
+													'Images/chiara-red.jpg',
+													'Images/chiara-skyblue.jpg'
+												]
+											};
+										}
+										// Product 10: Iza Cami Tank Top
+										if (i === 9) {
+											return {
+												id: 10,
+												name: 'Iza Cami Tank Top',
+												description: 'A classic cami tank top in a variety of colors.',
+												sizes: ['XS', 'S', 'M', 'L', 'XL'],
+												colors: ['Black', 'White', 'Blue', 'Mauve', 'Sky Blue', 'Brown', 'Dark Gray', 'Beige', 'White Yellow'],
+												images: [
+													'Images/iza-black.jpg',
+													'Images/iza-white.jpg',
+													'Images/iza-blue.jpg',
+													'Images/iza-mauve.jpg',
+													'Images/iza-skyblue.jpg',
+													'Images/iza-brown.jpg',
+													'Images/iza-darkgray.jpg',
+													'Images/iza-beige.jpg',
+													'Images/iza-whiteyellow.jpg'
+												]
+											};
+										}
+										// Product 11: Matilda Halter Top
+										if (i === 10) {
+											return {
+												id: 11,
+												name: 'Matilda Halter Top',
+												description: 'A stylish halter top available in seven colors.',
+												sizes: ['XS', 'S', 'M', 'L', 'XL'],
+												colors: ['Dark Blue', 'White', 'Brown', 'Blue', 'Royal Blue', 'Sky Blue', 'Stonegray'],
+												images: [
+													'Images/matilda-darkblue.jpg',
+													'Images/matilda-white.jpg',
+													'Images/matilda-brown.jpg',
+													'Images/matilda-blue.jpg',
+													'Images/matilda-royalblue.jpg',
+													'Images/matilda-skyblue.jpg',
+													'Images/matilda-stonegray.jpg'
+												]
+											};
+										}
+										// Product 12: Natalia Knit Top
+										if (i === 11) {
+											return {
+												id: 12,
+												name: 'Natalia Knit Top',
+												description: 'A ribbed knit top in eight versatile colors.',
+												sizes: ['XS', 'S', 'M', 'L', 'XL'],
+												colors: ['Black', 'White', 'Dark Brown', 'Brown', 'Beige', 'Dark Blue', 'Gray', 'Sky Blue'],
+												images: [
+													'Images/natalia-black.jpg',
+													'Images/natalia-white.jpg',
+													'Images/natalia-darkbrown.jpg',
+													'Images/natalia-brown.jpg',
+													'Images/natalia-beige.jpg',
+													'Images/natalia-darkblue.jpg',
+													'Images/natalia-gray.jpg',
+													'Images/natalia-skyblue.jpg'
+												]
+											};
+										}
+										// Product 13: Gia Tank Top
+										if (i === 12) {
+											return {
+												id: 13,
+												name: 'Gia Tank Top',
+												description: 'A scoop neck tank top in seven colors.',
+												sizes: ['XS', 'S', 'M', 'L', 'XL'],
+												colors: ['Black', 'White', 'Brown', 'White Beige', 'Blue', 'Mauve', 'Red'],
+												images: [
+													'Images/gia-black.jpg',
+													'Images/gia-white.jpg',
+													'Images/gia-brown.jpg',
+													'Images/gia-whitebeige.jpg',
+													'Images/gia-blue.jpg',
+													'Images/gia-mauve.jpg',
+													'Images/gia-red.jpg'
+												]
+											};
+										}
+										// Product 14: Alexa Long Sleeve
+										if (i === 13) {
+											return {
+												id: 14,
+												name: 'Alexa Long Sleeve',
+												description: 'A long sleeve squareneck top in six colors.',
+												sizes: ['XS', 'S', 'M', 'L', 'XL'],
+												colors: ['Black', 'White', 'Brown', 'Dark Brown', 'Gray', 'Royal Blue'],
+												images: [
+													'Images/alexa-black.jpg',
+													'Images/alexa-white.jpg',
+													'Images/alexa-brown.jpg',
+													'Images/alexa-darkbrown.jpg',
+													'Images/alexa-gray.jpg',
+													'Images/alexa-royalblue.jpg'
+												]
+											};
+										}
+										// Generic placeholder for products 15-41
+										   if (i === 14) {
+											   return {
+												   id: 15,
+												   name: 'Camilla Long Sleeve',
+												   description: 'An off-shoulder long sleeve top.',
+												   sizes: ['XS', 'S', 'M', 'L', 'XL'],
+												   colors: ['Black', 'White', 'Dark Brown', 'Cream', 'Light Gray', 'Dark Gray', 'Red', 'Rose Pink', 'Baby Pink'],
+												   images: [
+													   'Images/camilla-black.jpg',
+													   'Images/camilla-white.jpg',
+													   'Images/camilla-darkbrown.jpg',
+													   'Images/camilla-cream.jpg',
+													   'Images/camilla-lightgray.jpg',
+													   'Images/camilla-darkgray.jpg',
+													   'Images/camilla-red.jpg',
+													   'Images/camilla-rosepink.jpg',
+													   'Images/camilla-babypink.jpg'
+												   ]
+											   };
+										   }
+										   if (i === 15) {
+											   return {
+												   id: 16,
+												   name: 'Evalina Long Sleeve',
+												   description: 'A v-neck long sleeve top.',
+												   sizes: ['XS', 'S', 'M', 'L', 'XL'],
+												   colors: ['Black', 'White', 'Blue', 'Emerald'],
+												   images: [
+													   'Images/evalina-black.jpg',
+													   'Images/evalina-white.jpg',
+													   'Images/evalina-blue.jpg',
+													   'Images/evalina-emerald.jpg'
+												   ]
+											   };
+										   }
+										   if (i === 16) {
+											   return {
+												   id: 17,
+												   name: 'Luna Long Sleeve',
+												   description: 'A turtleneck long sleeve top.',
+												   sizes: ['XS', 'S', 'M', 'L', 'XL'],
+												   colors: ['Black', 'White', 'Dark Blue', 'Brown', 'Khaki'],
+												   images: [
+													   'Images/luna-black.jpg',
+													   'Images/luna-white.jpg',
+													   'Images/luna-darkblue.jpg',
+													   'Images/luna-brown.jpg',
+													   'Images/luna-khaki.jpg'
+												   ]
+											   };
+										   }
+										   if (i === 17) {
+											   return {
+												   id: 18,
+												   name: 'Olga Long Sleeve',
+												   description: 'A classic fitted long sleeve top.',
+												   sizes: ['XS', 'S', 'M', 'L', 'XL'],
+												   colors: ['Black', 'White', 'Brown', 'Choco Brown', 'Gray', 'Sky Blue'],
+												   images: [
+													   'Images/olga-black.jpg',
+													   'Images/olga-white.jpg',
+													   'Images/olga-brown.jpg',
+													   'Images/olga-chocobrown.jpg',
+													   'Images/olga-gray.jpg',
+													   'Images/olga-skyblue.jpg'
+												   ]
+											   };
+										   }
+										   if (i === 18) {
+											   return {
+												   id: 19,
+												   name: 'Ari Mini Dress',
+												   description: 'A mini tank dress.',
+												   sizes: ['XS', 'S', 'M', 'L', 'XL'],
+												   colors: ['Black', 'Ivory', 'Brown', 'Red'],
+												   images: [
+													   'Images/ari-black.jpg',
+													   'Images/ari-ivory.jpg',
+													   'Images/ari-brown.jpg',
+													   'Images/ari-red.jpg'
+												   ]
+											   };
+										   }
+										   if (i === 19) {
+											   return {
+												   id: 20,
+												   name: 'Ariana Maxi Dress',
+												   description: 'A maxi tank dress.',
+												   sizes: ['XS', 'S', 'M', 'L', 'XL'],
+												   colors: ['Black', 'White', 'White Beige', 'Skintone', 'Brown', 'Red'],
+												   images: [
+													   'Images/ariana-black.jpg',
+													   'Images/ariana-white.jpg',
+													   'Images/ariana-whitebeige.jpg',
+													   'Images/ariana-skintone.jpg',
+													   'Images/ariana-brown.jpg',
+													   'Images/ariana-red.jpg'
+												   ]
+											   };
+										   }
+										   if (i === 20) {
+											   return {
+												   id: 21,
+												   name: 'Bella Bodycon Dress',
+												   description: 'A bodycon knitted halter neckline midi length dress.',
+												   sizes: ['XS', 'S', 'M', 'L', 'XL'],
+												   colors: ['Black', 'White', 'Brown', 'Coffee', 'Dark Blue', 'Blue Green', 'Royal Blue', 'Powder Blue', 'Sage'],
+												   images: [
+													   'Images/bella-black.jpg',
+													   'Images/bella-white.jpg',
+													   'Images/bella-brown.jpg',
+													   'Images/bella-coffee.jpg',
+													   'Images/bella-darkblue.jpg',
+													   'Images/bella-bluegreen.jpg',
+													   'Images/bella-royalblue.jpg',
+													   'Images/bella-powderblue.jpg',
+													   'Images/bella-sage.jpg'
+												   ]
+											   };
+										   }
+										   if (i === 21) {
+											   return {
+												   id: 22,
+												   name: 'Cariza Off-Shoulder Dress',
+												   description: 'An off-shoulder bodycon dress.',
+												   sizes: ['XS', 'S', 'M', 'L', 'XL'],
+												   colors: ['Black', 'White', 'Brown', 'Stone', 'Red'],
+												   images: [
+													   'Images/cariza-black.jpg',
+													   'Images/cariza-white.jpg',
+													   'Images/cariza-brown.jpg',
+													   'Images/cariza-stone.jpg',
+													   'Images/cariza-red.jpg'
+												   ]
+											   };
+										   }
+										   // Removed generic placeholder for products 23-41
+										   return null;
+				});
+
+				   function showProductModal(idx, colorIdx=0) {
+					   const p = products[idx];
+					   const modal = document.getElementById('product-modal');
+					   // Sizes up to XXL
+					   const allSizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+					   let selectedSize = allSizes[0];
+					   let quantity = 1;
+					   // Render size buttons
+					   const sizeButtons = allSizes.map(size =>
+						   `<button type='button' class='size-btn' data-size='${size}' style='margin:0 4px 8px 0;padding:6px 14px;border-radius:12px;border:1px solid #ccc;background:${size===selectedSize?'#222':'#fff'};color:${size===selectedSize?'#fff':'#222'};cursor:pointer;'>${size}</button>`
+					   ).join('');
+					   // Quantity selector
+					   const quantitySelector = `
+						   <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;justify-content:center;">
+							   <button type='button' id='qty-minus' style='width:32px;height:32px;font-size:1.3rem;border-radius:50%;border:1px solid #ccc;background:#fff;cursor:pointer;'>-</button>
+							   <span id='qty-value' style='min-width:32px;display:inline-block;text-align:center;font-size:1.1rem;'>1</span>
+							   <button type='button' id='qty-plus' style='width:32px;height:32px;font-size:1.3rem;border-radius:50%;border:1px solid #ccc;background:#fff;cursor:pointer;'>+</button>
+						   </div>
+					   `;
+					   modal.innerHTML = `
+						   <div class="modal-content">
+							   <span class="close-btn" onclick="closeProductModal()">&times;</span>
+							   <img src="${p.images[colorIdx] || p.images[0]}" alt="${p.name}" style="width:100%;border-radius:18px;margin-bottom:18px;max-height:260px;object-fit:cover;">
+							   <h2 style="font-family:'Playfair Display',serif;font-size:2rem;margin-bottom:8px;">${p.name}</h2>
+							   <p style="color:var(--muted);margin-bottom:14px;">${p.description}</p>
+							   <div style="margin-bottom:10px;"><strong>Sizes:</strong> <span id='size-btns'>${sizeButtons}</span></div>
+							   <div style="margin-bottom:10px;"><strong>Colors:</strong> ${p.colors.map((c,j)=>`<button onclick='showProductModal(${idx},${j})' style='margin:0 4px 0 0;padding:6px 14px;border-radius:12px;border:1px solid #ccc;background:${colorIdx===j?'#eee':'#fff'};cursor:pointer;'>${c}</button>`).join('')}</div>
+							   ${quantitySelector}
+							   <button id='add-to-cart-btn' style='padding:10px 24px;border-radius:12px;background:var(--accent);color:#fff;border:0;font-size:1rem;cursor:pointer;width:100%;margin-top:8px;'>Add to Cart</button>
+						   </div>
+					   `;
+					   modal.style.display = 'flex';
+					   // Size selection logic
+					   const btns = modal.querySelectorAll('.size-btn');
+					   btns.forEach(btn => {
+						   btn.onclick = function() {
+							   btns.forEach(b => { b.style.background = '#fff'; b.style.color = '#222'; });
+							   btn.style.background = '#222';
+							   btn.style.color = '#fff';
+							   selectedSize = btn.getAttribute('data-size');
+						   };
+					   });
+					   // Quantity logic
+					   const qtyMinus = modal.querySelector('#qty-minus');
+					   const qtyPlus = modal.querySelector('#qty-plus');
+					   const qtyValue = modal.querySelector('#qty-value');
+					   qtyMinus.onclick = function() {
+						   if (quantity > 1) { quantity--; qtyValue.textContent = quantity; }
+					   };
+					   qtyPlus.onclick = function() {
+						   if (quantity < 99) { quantity++; qtyValue.textContent = quantity; }
+					   };
+				   }
+
+				function closeProductModal() {
+					document.getElementById('product-modal').style.display = 'none';
+				}
+
+				window.showProductModal = showProductModal;
+				window.closeProductModal = closeProductModal;
+				</script>
+				<div id="product-frames" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;margin-top:40px;">
+					<script>
+					const frames = document.getElementById('product-frames');
+					frames.innerHTML = products.filter(Boolean).map((p,i) => {
+					   const frameId = `product${i+1}`;
+					   return `<div class="product-frame" style="background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(11,18,32,0.07);padding:18px 14px 22px 14px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;min-height:340px;position:relative;">
+						   <div style="position:relative;width:100%;max-width:180px;height:180px;display:flex;align-items:center;justify-content:center;">
+							   <button id="${frameId}-left" style="position:absolute;left:-28px;top:50%;transform:translateY(-50%);background:transparent;border:none;cursor:pointer;z-index:2;outline:none;padding:0;">
+								   <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+									   <circle cx="19" cy="19" r="19" fill="transparent"/>
+									   <polyline points="23,10 15,19 23,28" fill="none" stroke="#222" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+								   </svg>
+							   </button>
+							   <img id="${frameId}-img" src="${p.images[0]}" alt="${p.name}" style="width:100%;max-width:180px;height:180px;object-fit:cover;border-radius:12px;">
+							   <button id="${frameId}-right" style="position:absolute;right:-28px;top:50%;transform:translateY(-50%);background:transparent;border:none;cursor:pointer;z-index:2;outline:none;padding:0;">
+								   <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+									   <circle cx="19" cy="19" r="19" fill="transparent"/>
+									   <polyline points="15,10 23,19 15,28" fill="none" stroke="#222" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+								   </svg>
+							   </button>
+						   </div>
+						   <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:4px;">${p.name}</h3>
+						   <div style="font-size:1.1rem;color:var(--accent);margin-bottom:10px;font-weight:600;">₱149</div>
+						   <button onclick="showProductModal(${i},0)" style="padding:7px 18px;border-radius:12px;background:var(--accent);color:#fff;border:0;font-size:1rem;cursor:pointer;">Add to Cart</button>
+					   </div>`;
+					}).join('');
+					// Add seamless left/right button logic for all frames
+					setTimeout(() => {
+						products.forEach((p, idx) => {
+							if (!p.images || p.images.length < 2) return;
+							const frameId = `product${idx+1}`;
+							let imgIdx = 0;
+							const img = document.getElementById(`${frameId}-img`);
+							const leftBtn = document.getElementById(`${frameId}-left`);
+							const rightBtn = document.getElementById(`${frameId}-right`);
+							if (img && leftBtn && rightBtn) {
+								leftBtn.onclick = function() {
+									imgIdx = (imgIdx - 1 + p.images.length) % p.images.length;
+									img.src = p.images[imgIdx];
+								};
+								rightBtn.onclick = function() {
+									imgIdx = (imgIdx + 1) % p.images.length;
+									img.src = p.images[imgIdx];
+								};
+							}
+						});
+					}, 200);
+					</script>
+				</div>
+				<div id="product-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(11,18,32,0.18);z-index:999;align-items:center;justify-content:center;"></div>
+			</div>
+		</main>
+		<footer class="site-footer" role="contentinfo" style="background:#fff;margin-top:40px;border-top:6px solid #000;">
+			<div style="max-width:1200px;margin:0 auto;padding:36px 28px;display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start;">
+				<div style="flex:1;min-width:220px;">
+					<h4 style="margin:0 0 8px;font-family:Playfair Display, serif;">VÉRAYA</h4>
+					<p style="margin:0;color:rgba(0,0,0,0.65);">Effortless Elegance. Everyday.</p>
+				</div>
+				<div style="flex:1;min-width:180px;">
+					<h5 style="margin:0 0 8px">Quick Links</h5>
+					<ul style="margin:0;padding:0;list-style:none;">
+						<li><a href="index.html" style="color:#000;text-decoration:none;">Home</a></li>
+						<li><a href="about-us.html" style="color:#000;text-decoration:none;">About Us</a></li>
+						<li><a href="shop.html" style="color:#000;text-decoration:none;">Shop</a></li>
+						<li><a href="lookbook.html" style="color:#000;text-decoration:none;">Lookbook</a></li>
+						<li><a href="size-chart.html" style="color:#000;text-decoration:none;">Size Chart</a></li>
+						<li><a href="faqs.html" style="color:#000;text-decoration:none;">FAQs</a></li>
+						<li><a href="contact.html" style="color:#000;text-decoration:none;">Contact Us</a></li>
+					</ul>
+				</div>
+				<div style="flex:1;min-width:220px;">
+					<h5 style="margin:0 0 8px">Contact</h5>
+					<p style="margin:0 0 8px"><a href="mailto:hello@veraya.example" style="color:rgba(0,0,0,0.85);">hello@veraya.example</a></p>
+				</div>
+				<div style="flex:1;min-width:260px;">
+					<h5 style="margin:0 0 8px">Newsletter</h5>
+					<form id="newsletter-form" style="display:flex;gap:8px;align-items:center;">
+						<input id="newsletter-email" type="email" placeholder="you@example.com" required style="flex:1;padding:8px;border:1px solid rgba(0,0,0,0.12);border-radius:4px">
+						<button type="submit" style="padding:8px 12px;background:#000;color:#fff;border:0;border-radius:4px;cursor:pointer">Subscribe</button>
+					</form>
+					<div id="newsletter-message" aria-live="polite" style="margin-top:8px;color:rgba(0,0,0,0.7)"></div>
+					<div style="margin-top:12px">Follow: <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a> · <a href="https://facebook.com/" target="_blank" rel="noopener">Facebook</a></div>
+				</div>
+			</div>
+			<div style="background:transparent;padding:12px 28px;border-top:1px solid rgba(0,0,0,0.04);text-align:center;color:rgba(0,0,0,0.6)">&copy; <span id="year"></span> VÉRAYA. All rights reserved.</div>
+			<script>
+			(function(){
+				var y = document.getElementById('year'); if(y) y.textContent = new Date().getFullYear();
+				var form = document.getElementById('newsletter-form');
+				var input = document.getElementById('newsletter-email');
+				var msg = document.getElementById('newsletter-message');
+				var KEY = 'veraya_newsletter_v1';
+				function load(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return[]}}
+				function save(email){var arr=load(); if(arr.includes(email)) return false; arr.push(email); localStorage.setItem(KEY, JSON.stringify(arr)); return true}
+				if(form && input){
+					form.addEventListener('submit', function(e){
+						e.preventDefault();
+						var email = input.value.trim().toLowerCase();
+						if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ msg.textContent='Please enter a valid email.'; return }
+						if(save(email)){ msg.textContent = "Thanks — you're subscribed!"; input.value = '' } else { msg.textContent = 'You are already subscribed.' }
+						setTimeout(function(){ msg.textContent = '' }, 3000);
+					});
+				}
+			})();
+			</script>
+		</footer>
+	</body>
+</html>
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>Shop — VÉRAYA</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+		<style>
+			:root{
+				--main:#EBE8E8;
+				--panel:#ffffff;
+				--text:#0b1220;
+				--muted:rgba(11,18,32,0.55);
+				--accent:#000000;
+			}
+			*{box-sizing:border-box}
+			body{
+				margin:0;
+				font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+				background:var(--main);
+				color:var(--text);
+				-webkit-font-smoothing:antialiased;
+				-moz-osx-font-smoothing:grayscale;
+			}
+			header.site{
+				max-width:1200px;
+				margin:28px auto 8px;
+				padding:0 28px;
+				position:sticky;
+				top:0;
+				z-index:60;
+				background:var(--main);
+				backdrop-filter: blur(6px);
+				box-shadow: 0 6px 18px rgba(11,18,32,0.06);
+			}
+			nav.top{
+				display:flex;
+				align-items:center;
+				justify-content:space-between;
+				gap:12px;
+			}
+			.nav-left, .nav-right{
+				display:flex;
+				gap:22px;
+				align-items:center;
+			}
+			.header-actions{display:flex;gap:12px;align-items:center}
+			.icon-btn{background:transparent;border:0;padding:6px;cursor:pointer;position:relative;display:inline-flex;align-items:center;justify-content:center}
+			.icon-btn svg{width:20px;height:20px;display:block;fill:var(--text)}
+			.icon-btn:focus{outline:2px solid rgba(0,0,0,0.12);outline-offset:2px}
+			.cart-badge{position:absolute;right:2px;top:2px;background:#e60023;color:#fff;border-radius:999px;font-size:11px;padding:2px 6px;line-height:1}
+			.search-wrapper{position:relative;display:flex;align-items:center}
+			.search-input{display:none;border:1px solid rgba(11,18,32,0.08);padding:8px 10px;margin-left:8px;border-radius:6px;min-width:200px}
+			.search-wrapper.active .search-input{display:block}
+			@media (min-width:900px){
+				.search-input{display:block}
+				.search-wrapper{margin-left:12px}
+			}
+			.nav-left a, .nav-right a{
+				text-decoration:none;
+				color:var(--text);
+				font-size:1rem;
+				border-bottom:1px solid transparent;
+				padding-bottom:2px;
+			}
+			.nav-left a:hover, .nav-right a:hover{border-bottom-color:var(--accent)}
+			.logo{
+				font-family:'Playfair Display', serif;
+				font-weight:900;
+				font-size:48px;
+				letter-spacing:2px;
+				margin:0 16px;
+				text-align:center;
+			}
+			.logo img{height:140px;display:block;object-fit:contain}
+			@media (max-width:980px){.logo img{height:112px}}
+			@media (max-width:720px){.logo img{height:96px}; nav.top{flex-direction:column;align-items:stretch}; .nav-left, .nav-right{justify-content:center}; .logo{order:0;margin:12px 0}}
+			main.container{
+				max-width:1200px;
+				margin:48px auto;
+				padding:24px 28px 40px;
+				text-align:center;
+			}
+			h1{
+				font-family:'Playfair Display', serif;
+				font-size:48px;
+				margin:0 0 18px;
+			}
+			p{
+				color:var(--muted);
+				line-height:1.6;
+				font-size:1.05rem;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="site">
+			<nav class="top" role="navigation" aria-label="Main navigation">
+				<div class="nav-left">
+					<div class="logo"><a href="index.html" aria-label="Home"><img src="Images/logo.png" alt="VÉRAYA logo"></a></div>
+					<a href="index.html">Home</a>
+					<a href="about-us.html">About Us</a>
+					<a href="shop.html">Shop</a>
+				</div>
+
+				<div class="nav-right">
+					<a href="lookbook.html" aria-label="Lookbook">Lookbook</a>
+					<a href="size-chart.html" aria-label="Size Chart">Size Chart</a>
+					<a href="faqs.html" aria-label="FAQs">FAQs</a>
+					<a href="contact.html" aria-label="Contact Us">Contact Us</a>
+					<div class="search-wrapper">
+						<button class="icon-btn search-toggle" aria-label="Open search">
+							<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+						</button>
+						<input class="search-input" type="search" placeholder="Search products" aria-label="Search products">
+					</div>
+					<a class="icon-btn account-link" href="signin.html" aria-label="Account">
+						<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/></svg>
+					</a>
+					<button class="icon-btn cart-btn" aria-label="View cart">
+						<span class="cart-badge">0</span>
+						<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2zM7.16 14.26l.84-4.26h8.02c.75 0 1.41-.41 1.75-1.03l1.58-3.33L20.1 4H6.21l-.94-2H1v2h2l3.6 7.59-1.35 2.45C4.52 15.37 5.48 17 7 17h12v-2H7.42c-.13 0-.24-.09-.26-.22z"/></svg>
+					</button>
+				</div>
+			</nav>
+		</header>
+
+		<main class="container">
+			<h1>Shop</h1>
+			<p>Browse our complete collection of effortless, elegant pieces.</p>
+			<div class="product-grid">
+				<!-- 41 product frames -->
+				   <!-- Product grid and modal are rendered by the main script above. Duplicate removed. -->
+			</div>
+			<style>
+			@media (max-width:900px){.product-grid #product-frames{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));}}
+			@media (max-width:600px){.product-grid #product-frames{grid-template-columns:1fr;}}
+			.modal-content{background:#fff;border-radius:22px;max-width:420px;width:90vw;padding:32px 24px;box-shadow:0 8px 32px rgba(11,18,32,0.13);position:relative;}
+			.close-btn{position:absolute;top:18px;right:18px;font-size:2rem;cursor:pointer;color:var(--muted);font-weight:700;}
+			</style>
+		</main>
+
+		<footer class="site-footer" role="contentinfo" style="background:#fff;margin-top:40px;border-top:6px solid #000;">
+			<div style="max-width:1200px;margin:0 auto;padding:36px 28px;display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start;">
+				<div style="flex:1;min-width:220px;">
+					<h4 style="margin:0 0 8px;font-family:Playfair Display, serif;">VÉRAYA</h4>
+					<p style="margin:0;color:rgba(0,0,0,0.65);">Effortless Elegance. Everyday.</p>
+				</div>
+				<div style="flex:1;min-width:180px;">
+					<h5 style="margin:0 0 8px">Quick Links</h5>
+					<ul style="margin:0;padding:0;list-style:none;">
+						<li><a href="index.html" style="color:#000;text-decoration:none;">Home</a></li>
+						<li><a href="about-us.html" style="color:#000;text-decoration:none;">About Us</a></li>
+						<li><a href="shop.html" style="color:#000;text-decoration:none;">Shop</a></li>
+						<li><a href="lookbook.html" style="color:#000;text-decoration:none;">Lookbook</a></li>
+						<li><a href="size-chart.html" style="color:#000;text-decoration:none;">Size Chart</a></li>
+						<li><a href="faqs.html" style="color:#000;text-decoration:none;">FAQs</a></li>
+						<li><a href="contact.html" style="color:#000;text-decoration:none;">Contact Us</a></li>
+					</ul>
+				</div>
+				<div style="flex:1;min-width:220px;">
+					<h5 style="margin:0 0 8px">Contact</h5>
+					<p style="margin:0 0 8px"><a href="mailto:hello@veraya.example" style="color:rgba(0,0,0,0.85);">hello@veraya.example</a></p>
+				</div>
+				<div style="flex:1;min-width:260px;">
+					<h5 style="margin:0 0 8px">Newsletter</h5>
+					<form id="newsletter-form" style="display:flex;gap:8px;align-items:center;">
+						<input id="newsletter-email" type="email" placeholder="you@example.com" required style="flex:1;padding:8px;border:1px solid rgba(0,0,0,0.12);border-radius:4px">
+						<button type="submit" style="padding:8px 12px;background:#000;color:#fff;border:0;border-radius:4px;cursor:pointer">Subscribe</button>
+					</form>
+					<div id="newsletter-message" aria-live="polite" style="margin-top:8px;color:rgba(0,0,0,0.7)"></div>
+					<div style="margin-top:12px">Follow: <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a> · <a href="https://facebook.com/" target="_blank" rel="noopener">Facebook</a></div>
+				</div>
+			</div>
+			<div style="background:transparent;padding:12px 28px;border-top:1px solid rgba(0,0,0,0.04);text-align:center;color:rgba(0,0,0,0.6)">&copy; <span id="year"></span> VÉRAYA. All rights reserved.</div>
+			<script>
+			(function(){
+				var y = document.getElementById('year'); if(y) y.textContent = new Date().getFullYear();
+				var form = document.getElementById('newsletter-form');
+				var input = document.getElementById('newsletter-email');
+				var msg = document.getElementById('newsletter-message');
+				var KEY = 'veraya_newsletter_v1';
+				function load(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return[]}}
+				function save(email){var arr=load(); if(arr.includes(email)) return false; arr.push(email); localStorage.setItem(KEY, JSON.stringify(arr)); return true}
+				if(form && input){
+					form.addEventListener('submit', function(e){
+						e.preventDefault();
+						var email = input.value.trim().toLowerCase();
+						if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ msg.textContent='Please enter a valid email.'; return }
+						if(save(email)){ msg.textContent = "Thanks — you're subscribed!"; input.value = '' } else { msg.textContent = 'You are already subscribed.' }
+						setTimeout(function(){ msg.textContent = '' }, 3000);
+					});
+				}
+			})();
+			</script>
+		</footer>
+	</body>
+</html>

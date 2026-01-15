@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>Lookbook — VÉRAYA</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+		<style>
+			:root{
+				--main:#EBE8E8;
+				--panel:#ffffff;
+				--text:#0b1220;
+				--muted:rgba(11,18,32,0.55);
+				--accent:#000000;
+			}
+			*{box-sizing:border-box}
+			body{
+				margin:0;
+				font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+				background:var(--main);
+				color:var(--text);
+				-webkit-font-smoothing:antialiased;
+				-moz-osx-font-smoothing:grayscale;
+			}
+			header.site{
+				max-width:1200px;
+				margin:28px auto 8px;
+				padding:0 28px;
+				position:sticky;
+				top:0;
+				z-index:60;
+				background:var(--main);
+				backdrop-filter: blur(6px);
+				box-shadow: 0 6px 18px rgba(11,18,32,0.06);
+			}
+			nav.top{
+				display:flex;
+				align-items:center;
+				justify-content:space-between;
+				gap:12px;
+			}
+			.nav-left, .nav-right{
+				display:flex;
+				gap:22px;
+				align-items:center;
+			}
+			.header-actions{display:flex;gap:12px;align-items:center}
+			.icon-btn{background:transparent;border:0;padding:6px;cursor:pointer;position:relative;display:inline-flex;align-items:center;justify-content:center}
+			.icon-btn svg{width:20px;height:20px;display:block;fill:var(--text)}
+			.icon-btn:focus{outline:2px solid rgba(0,0,0,0.12);outline-offset:2px}
+			.cart-badge{position:absolute;right:2px;top:2px;background:#e60023;color:#fff;border-radius:999px;font-size:11px;padding:2px 6px;line-height:1}
+			.search-wrapper{position:relative;display:flex;align-items:center}
+			.search-input{display:none;border:1px solid rgba(11,18,32,0.08);padding:8px 10px;margin-left:8px;border-radius:6px;min-width:200px}
+			.search-wrapper.active .search-input{display:block}
+			@media (min-width:900px){
+				.search-input{display:block}
+				.search-wrapper{margin-left:12px}
+			}
+			.nav-left a, .nav-right a{
+				text-decoration:none;
+				color:var(--text);
+				font-size:1rem;
+				border-bottom:1px solid transparent;
+				padding-bottom:2px;
+			}
+			.nav-left a:hover, .nav-right a:hover{border-bottom-color:var(--accent)}
+			.logo{
+				font-family:'Playfair Display', serif;
+				font-weight:900;
+				font-size:48px;
+				letter-spacing:2px;
+				margin:0 16px;
+				text-align:center;
+			}
+			.logo img{height:140px;display:block;object-fit:contain}
+			@media (max-width:980px){.logo img{height:112px}}
+			@media (max-width:720px){.logo img{height:96px}; nav.top{flex-direction:column;align-items:stretch}; .nav-left, .nav-right{justify-content:center}; .logo{order:0;margin:12px 0}}
+			main.container{
+				max-width:1200px;
+				margin:48px auto;
+				padding:24px 28px 40px;
+				text-align:center;
+			}
+			h1{
+				font-family:'Playfair Display', serif;
+				font-size:48px;
+				margin:0 0 18px;
+			}
+			p{
+				color:var(--muted);
+				line-height:1.6;
+				font-size:1.05rem;
+			}
+		</style>
+		<style>
+			.lookbook-grid {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 28px;
+				margin-top: 40px;
+			}
+			.lookbook-frame {
+				background: #fff;
+				border-radius: 14px;
+				box-shadow: 0 4px 18px rgba(11,18,32,0.08);
+				display: flex;
+				align-items: stretch;
+				justify-content: center;
+				position: relative;
+				overflow: hidden;
+				padding: 0;
+				height: 480px;
+			}
+			.lookbook-frame img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+			}
+			.lookbook-caption {
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				color: #fff;
+				font-family: 'Playfair Display', serif;
+				font-size: 2rem;
+				background: linear-gradient(0deg, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.05) 100%, transparent 100%);
+				padding: 32px 28px 18px 28px;
+				width: 100%;
+				box-sizing: border-box;
+				pointer-events: none;
+			}
+			@media (max-width: 900px) {
+				.lookbook-grid {
+					grid-template-columns: repeat(2, 1fr);
+				}
+				.lookbook-frame {
+					height: 400px;
+				}
+				.lookbook-caption { font-size: 1.3rem; padding: 18px 14px 10px 14px; }
+			}
+			@media (max-width: 600px) {
+				.lookbook-grid {
+					grid-template-columns: 1fr;
+				}
+				.lookbook-frame {
+					height: 320px;
+				}
+				.lookbook-caption { font-size: 1.1rem; padding: 10px 8px 6px 8px; }
+			}
+			@media (max-width: 900px) {
+				.lookbook-grid {
+					grid-template-columns: repeat(2, 1fr);
+				}
+			}
+			@media (max-width: 600px) {
+				.lookbook-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<header class="site">
+			<nav class="top" role="navigation" aria-label="Main navigation">
+				<div class="nav-left">
+					<div class="logo"><a href="index.html" aria-label="Home"><img src="Images/logo.png" alt="VÉRAYA logo"></a></div>
+					<a href="index.html">Home</a>
+					<a href="about-us.html">About Us</a>
+					<a href="shop.html">Shop</a>
+				</div>
+
+				<div class="nav-right">
+					<a href="lookbook.html" aria-label="Lookbook">Lookbook</a>
+					<a href="size-chart.html" aria-label="Size Chart">Size Chart</a>
+					<a href="faqs.html" aria-label="FAQs">FAQs</a>
+					<a href="contact.html" aria-label="Contact Us">Contact Us</a>
+					<div class="search-wrapper">
+						<button class="icon-btn search-toggle" aria-label="Open search">
+							<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+						</button>
+						<input class="search-input" type="search" placeholder="Search products" aria-label="Search products">
+					</div>
+					<a class="icon-btn account-link" href="signin.html" aria-label="Account">
+						<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/></svg>
+					</a>
+					<button class="icon-btn cart-btn" aria-label="View cart">
+						<span class="cart-badge">0</span>
+						<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2S15.9 22 17 22s2-.9 2-2-.9-2-2-2zM7.16 14.26l.84-4.26h8.02c.75 0 1.41-.41 1.75-1.03l1.58-3.33L20.1 4H6.21l-.94-2H1v2h2l3.6 7.59-1.35 2.45C4.52 15.37 5.48 17 7 17h12v-2H7.42c-.13 0-.24-.09-.26-.22z"/></svg>
+					</button>
+				</div>
+			</nav>
+		</header>
+
+		<main class="container">
+			<h1>Lookbook.</h1>
+			<p>Browse our latest collection and styling inspiration.</p>
+				<div class="lookbook-grid">
+					<div class="lookbook-frame"><img src="Images/look1.jpg" alt="Naomi Tee White"><div class="lookbook-caption">Naomi Tee<br><span style="font-size:1.1rem;font-style:italic;">White</span></div></div>
+					<div class="lookbook-frame"><img src="Images/look2.jpg" alt="Gia Tank Top Black"><div class="lookbook-caption">Gia Tank Top<br><span style="font-size:1.1rem;font-style:italic;">Black</span></div></div>
+					<div class="lookbook-frame"><img src="Images/look3.jpg" alt="Alexa Long Sleeve Choco Brown"><div class="lookbook-caption">Alexa Long Sleeve<br><span style="font-size:1.1rem;font-style:italic;">Choco Brown</span></div></div>
+					<div class="lookbook-frame"><img src="Images/look4.jpg" alt="Amanda Racerback White"><div class="lookbook-caption">Amanda Racerback<br><span style="font-size:1.1rem;font-style:italic;">White</span></div></div>
+					<div class="lookbook-frame"><img src="Images/look5.jpg" alt="Claudia Maxi Dress Red"><div class="lookbook-caption">Claudia Maxi Dress<br><span style="font-size:1.1rem;font-style:italic;">Red</span></div></div>
+					<div class="lookbook-frame"><img src="Images/look6.jpg" alt="Arya Tank Top White"><div class="lookbook-caption">Arya Tank Top<br><span style="font-size:1.1rem;font-style:italic;">White</span></div></div>
+					<div class="lookbook-frame"><img src="Images/look7.jpg" alt="Renata Short Sleeve Skintone"><div class="lookbook-caption">Renata Short Sleeve<br><span style="font-size:1.1rem;font-style:italic;">Skintone</span></div></div>
+					<div class="lookbook-frame"><img src="Images/look8.jpg" alt="Matilda Halter Top White"><div class="lookbook-caption">Matilda Halter Top<br><span style="font-size:1.1rem;font-style:italic;">White</span></div></div>
+					<div class="lookbook-frame"><img src="Images/look9.jpg" alt="Martina Scoop Neck Tee Black"><div class="lookbook-caption">Martina Scoop Neck Tee<br><span style="font-size:1.1rem;font-style:italic;">Black</span></div></div>
+					<div class="lookbook-frame"><img src="Images/look10.jpg" alt="Trouser Pants Stone"><div class="lookbook-caption">Trouser Pants<br><span style="font-size:1.1rem;font-style:italic;">Stone</span></div></div>
+					<div class="lookbook-frame"><img src="Images/look11.jpg" alt="Olivia Maxi Dress Black"><div class="lookbook-caption">Olivia Maxi Dress<br><span style="font-size:1.1rem;font-style:italic;">Black</span></div></div>
+					<div class="lookbook-frame"><img src="Images/look12.jpg" alt="Adelina Halter Top White"><div class="lookbook-caption">Adelina Halter Top<br><span style="font-size:1.1rem;font-style:italic;">White</span></div></div>
+				</div>
+			</main>
+
+		<footer class="site-footer" role="contentinfo" style="background:#fff;margin-top:40px;border-top:6px solid #000;">
+			<div style="max-width:1200px;margin:0 auto;padding:36px 28px;display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start;">
+				<div style="flex:1;min-width:220px;">
+					<h4 style="margin:0 0 8px;font-family:Playfair Display, serif;">VÉRAYA</h4>
+					<p style="margin:0;color:rgba(0,0,0,0.65);">Effortless Elegance. Everyday.</p>
+				</div>
+				<div style="flex:1;min-width:180px;">
+					<h5 style="margin:0 0 8px">Quick Links</h5>
+					<ul style="margin:0;padding:0;list-style:none;">
+						<li><a href="index.html" style="color:#000;text-decoration:none;">Home</a></li>
+						<li><a href="about-us.html" style="color:#000;text-decoration:none;">About Us</a></li>
+						<li><a href="shop.html" style="color:#000;text-decoration:none;">Shop</a></li>
+						<li><a href="lookbook.html" style="color:#000;text-decoration:none;">Lookbook</a></li>
+						<li><a href="size-chart.html" style="color:#000;text-decoration:none;">Size Chart</a></li>
+						<li><a href="faqs.html" style="color:#000;text-decoration:none;">FAQs</a></li>
+						<li><a href="contact.html" style="color:#000;text-decoration:none;">Contact Us</a></li>
+					</ul>
+				</div>
+				<div style="flex:1;min-width:220px;">
+					<h5 style="margin:0 0 8px">Contact</h5>
+					<p style="margin:0 0 8px"><a href="mailto:hello@veraya.example" style="color:rgba(0,0,0,0.85);">hello@veraya.example</a></p>
+				</div>
+				<div style="flex:1;min-width:260px;">
+					<h5 style="margin:0 0 8px">Newsletter</h5>
+					<form id="newsletter-form" style="display:flex;gap:8px;align-items:center;">
+						<input id="newsletter-email" type="email" placeholder="you@example.com" required style="flex:1;padding:8px;border:1px solid rgba(0,0,0,0.12);border-radius:4px">
+						<button type="submit" style="padding:8px 12px;background:#000;color:#fff;border:0;border-radius:4px;cursor:pointer">Subscribe</button>
+					</form>
+					<div id="newsletter-message" aria-live="polite" style="margin-top:8px;color:rgba(0,0,0,0.7)"></div>
+					<div style="margin-top:12px">Follow: <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a> · <a href="https://facebook.com/" target="_blank" rel="noopener">Facebook</a></div>
+				</div>
+			</div>
+			<div style="background:transparent;padding:12px 28px;border-top:1px solid rgba(0,0,0,0.04);text-align:center;color:rgba(0,0,0,0.6)">&copy; <span id="year"></span> VÉRAYA. All rights reserved.</div>
+			<script>
+			(function(){
+				var y = document.getElementById('year'); if(y) y.textContent = new Date().getFullYear();
+				var form = document.getElementById('newsletter-form');
+				var input = document.getElementById('newsletter-email');
+				var msg = document.getElementById('newsletter-message');
+				var KEY = 'veraya_newsletter_v1';
+				function load(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return[]}}
+				function save(email){var arr=load(); if(arr.includes(email)) return false; arr.push(email); localStorage.setItem(KEY, JSON.stringify(arr)); return true}
+				if(form && input){
+					form.addEventListener('submit', function(e){
+						e.preventDefault();
+						var email = input.value.trim().toLowerCase();
+						if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ msg.textContent='Please enter a valid email.'; return }
+						if(save(email)){ msg.textContent = "Thanks — you're subscribed!"; input.value = '' } else { msg.textContent = 'You are already subscribed.' }
+						setTimeout(function(){ msg.textContent = '' }, 3000);
+					});
+				}
+			})();
+			</script>
+		</footer>
+	</body>
+</html>

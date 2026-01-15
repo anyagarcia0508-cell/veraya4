@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>About — VÉRAYA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+      :root{--main:#EBE8E8;--panel:#fff;--text:#0b1220}
+      *{box-sizing:border-box}
+      body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;background:var(--main);color:var(--text);-webkit-font-smoothing:antialiased}
+      header.site{max-width:1200px;margin:28px auto 8px;padding:0 28px;position:sticky;top:0;z-index:60;background:var(--main);backdrop-filter: blur(6px);box-shadow: 0 6px 18px rgba(11,18,32,0.06)}
+      nav.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+      .nav-left,.nav-right{display:flex;gap:22px;align-items:center}
+      .logo{font-family:'Playfair Display',serif;font-weight:900;font-size:48px;letter-spacing:2px;margin:0 16px;text-align:center}
+      .logo img{height:84px;display:block;object-fit:contain}
+      .icon-btn{background:transparent;border:0;padding:6px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+      main.container{max-width:1200px;margin:6px auto 48px;padding:24px 28px 40px}
+
+      /* About hero frame */
+      .about-hero{display:block;background:var(--panel);border:6px solid #000;padding:0;overflow:hidden;margin-bottom:0;position:relative}
+      .about-hero img{width:100%;height:360px;object-fit:cover;display:block}
+      .about-hero-fade{
+        position:absolute;
+        left:0;right:0;bottom:0;height:90px;
+        background:linear-gradient(to bottom,rgba(255,255,255,0) 0%, var(--main) 100%);
+        pointer-events:none;
+      }
+      @media (min-width:1200px){.about-hero img{height:420px}.about-hero-fade{height:120px}}
+      @media (max-width:720px){.logo img{height:56px}.about-hero img{height:280px}.about-hero-fade{height:60px}}
+      @media (min-width:1200px){.about-hero img{height:420px}}
+      @media (max-width:720px){.logo img{height:56px}.about-hero img{height:280px}}
+
+      .content{max-width:980px;margin:0 auto}
+      h1{font-family:'Playfair Display',serif;font-size:36px;margin:8px 0}
+      p{color:rgba(0,0,0,0.7);line-height:1.6}
+    </style>
+  </head>
+  <body>
+    <header class="site">
+      <nav class="top" role="navigation" aria-label="Main navigation">
+        <div class="nav-left">
+          <div class="logo"><a href="/" aria-label="Home"><img src="Images/logo.png" alt="VÉRAYA logo"></a></div>
+          <a href="/">Home</a>
+          <a href="index.html">Shop</a>
+          <a href="about.html">About Us</a>
+        </div>
+
+        <div class="nav-right">
+          <a href="lookbook.html">Lookbook</a>
+          <a href="size-chart.html">Size Chart</a>
+          <a href="faqs.html">FAQs</a>
+          <a href="contact.html">Contact</a>
+          <a class="icon-btn account-link" href="signin.html" aria-label="Account">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/></svg>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+      <!-- Rectangular photo frame on top of About page -->
+
+      <div class="about-hero" role="img" aria-label="Studio photo">
+        <img src="Images/studio-2.jpg" alt="Behind the scenes photoshoot in studio">
+        <div class="about-hero-fade"></div>
+      </div>
+
+      <section class="content">
+        <h1>About VÉRAYA</h1>
+        <p>
+          VÉRAYA was created with the idea that clothing should feel effortless, timeless, and empowering. Inspired by modern minimalism, the brand focuses on clean silhouettes, neutral tones, and versatile designs that fit seamlessly into everyday life.
+        </p>
+        <p>
+          Built for women who value comfort without compromising style, VÉRAYA believes that simplicity is powerful. Each piece is thoughtfully designed to be worn across different occasions—casual days, school, work, or relaxed social settings.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
